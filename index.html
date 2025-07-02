@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Energia - Uberaba</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Passo 1: Sua Casa em Uberaba -->
+        <section id="passo1" class="passo ativo">
+            <div class="background-image" style="background-image: url('images/parque_acacias.jpg');">
+                <div class="overlay"></div>
+            </div>
+            <div class="container">
+                <div class="content">
+                    <h1>Sua Casa em Uberaba</h1>
+                    <p class="intro">Olá! Você já parou para pensar na energia que sua casa, aqui em Uberaba, consome todos os dias? Vamos descobrir juntos o tamanho do nosso impacto. Comece selecionando os aparelhos que você usa e por quanto tempo.</p>
+                    
+                    <div class="aparelhos-grid">
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">💡</div>
+                            <h3>Lâmpadas LED</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="lampadas-qtd" min="0" value="10">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="lampadas-horas" min="0" max="24" value="6">
+                            </div>
+                            <div class="potencia">10W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🚿</div>
+                            <h3>Chuveiro Elétrico</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="chuveiro-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="chuveiro-horas" min="0" max="24" step="0.5" value="1">
+                            </div>
+                            <div class="potencia">5500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">❄️</div>
+                            <h3>Geladeira</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="geladeira-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="geladeira-horas" min="0" max="24" value="24" readonly>
+                            </div>
+                            <div class="potencia">150W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">📺</div>
+                            <h3>TV</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="tv-qtd" min="0" value="2">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="tv-horas" min="0" max="24" value="6">
+                            </div>
+                            <div class="potencia">100W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">💻</div>
+                            <h3>Computador</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="computador-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="computador-horas" min="0" max="24" value="8">
+                            </div>
+                            <div class="potencia">300W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🌀</div>
+                            <h3>Ar-condicionado</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="ar-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="ar-horas" min="0" max="24" value="8">
+                            </div>
+                            <div class="potencia">1500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🌪️</div>
+                            <h3>Ventilador</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="ventilador-qtd" min="0" value="3">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="ventilador-horas" min="0" max="24" value="10">
+                            </div>
+                            <div class="potencia">65W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">👕</div>
+                            <h3>Máquina de Lavar</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="maquina-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="maquina-horas" min="0" max="24" step="0.5" value="1">
+                            </div>
+                            <div class="potencia">500W cada</div>
+                        </div>
+                    </div>
+
+                    <div class="resultado-individual">
+                        <h3>Seu Consumo Diário:</h3>
+                        <div class="consumo-valor">
+                            <span id="consumo-diario">0</span> kWh/dia
+                        </div>
+                        <div class="consumo-mensal">
+                            <span id="consumo-mensal">0</span> kWh/mês
+                        </div>
+                    </div>
+
+                    <button class="btn-proximo" onclick="irParaPasso2()">
+                        Ver o Impacto na Cidade
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passo 2: Sua Rua, Seu Bairro, Sua Cidade -->
+        <section id="passo2" class="passo">
+            <div class="background-image" style="background-image: url('images/uberaba_panoramica.jpg');">
+                <div class="overlay"></div>
+            </div>
+            <div class="container">
+                <div class="content">
+                    <h1>Sua Rua, Seu Bairro, Sua Cidade</h1>
+                    <p class="intro">Impressionante, não é? Agora, imagine se cada um dos seus vizinhos, e depois todos os <strong>352.000 habitantes de Uberaba</strong>, tivessem o mesmo consumo que você. A energia necessária seria gigantesca!</p>
+                    
+                    <div class="projecao-container">
+                        <div class="projecao-card">
+                            <h3>Seu Consumo Individual</h3>
+                            <div class="valor-grande">
+                                <span id="consumo-individual-display">0</span> kWh/mês
+                            </div>
+                        </div>
+
+                        <div class="multiplicacao">×</div>
+
+                        <div class="projecao-card">
+                            <h3>População de Uberaba</h3>
+                            <div class="valor-grande">352.000 habitantes</div>
+                        </div>
+
+                        <div class="igual">=</div>
+
+                        <div class="projecao-card destaque">
+                            <h3>Consumo Total da Cidade</h3>
+                            <div class="valor-gigante">
+                                <span id="consumo-total-cidade">0</span> kWh/mês
+                            </div>
+                            <div class="equivalencia">
+                                <span id="consumo-total-gwh">0</span> GWh/mês
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visualizacao-grafico">
+                        <canvas id="grafico-consumo" width="800" height="400"></canvas>
+                    </div>
+
+                    <button class="btn-proximo" onclick="irParaPasso3()">
+                        Ver o Preço Ambiental
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passo 3: O Preço da Nossa Energia -->
+        <section id="passo3" class="passo">
+            <div class="container">
+                <div class="content">
+                    <h1>O Preço da Nossa Energia</h1>
+                    <p class="intro">Para gerar toda essa energia, precisamos escolher como produzi-la. Cada opção tem um preço ambiental diferente. Vamos descobrir qual é o custo real?</p>
+                    
+                    <div class="opcoes-energia">
+                        <div class="opcao-card" id="opcao-hidreletrica">
+                            <div class="opcao-header">
+                                <h3>💧 Usinas Hidrelétricas</h3>
+                                <p>Como a UHE Volta Grande, no Rio Grande</p>
+                            </div>
+                            <div class="opcao-content">
+                                <div class="necessidade">
+                                    <strong>Seria necessário construir:</strong>
+                                    <div class="valor-destaque">
+                                        <span id="usinas-hidreletricas">0</span> usinas
+                                    </div>
+                                    <p>como a de Volta Grande (380 MW)</p>
+                                </div>
+                                
+                                <div class="impactos">
+                                    <div class="impacto-item">
+                                        <h4>🏞️ Área Alagada</h4>
+                                        <p>Cada usina exigiria o alagamento de aproximadamente <strong>76 km²</strong> de terras.</p>
+                                        <div class="equivalencia">
+                                            Isso é o mesmo que inundar uma área correspondente a <strong><span id="campos-futebol">0</span> campos de futebol do Uberabão</strong>.
+                                        </div>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>🐟 Impacto na Fauna</h4>
+                                        <p>Peixes como o dourado, que sobem o rio para se reproduzir, não conseguiriam mais passar. A construção de barragens pode significar o fim de muitas espécies em nossos rios.</p>
+                                        <img src="images/dourado.jpg" alt="Peixe Dourado" class="impacto-imagem">
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>🌱 Desmatamento</h4>
+                                        <p>Toda a vegetação nativa dentro da área alagada seria permanentemente perdida, afetando o ecossistema local.</p>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>🏘️ Impacto Social</h4>
+                                        <p>Comunidades ribeirinhas e pequenos agricultores que vivem nas áreas a serem inundadas precisariam ser permanentemente reassentados.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="opcao-card" id="opcao-termeletrica">
+                            <div class="opcao-header">
+                                <h3>🔥 Usinas Termelétricas a Carvão</h3>
+                                <p>A opção mais poluente</p>
+                            </div>
+                            <div class="opcao-content">
+                                <div class="necessidade">
+                                    <strong>Seria necessário construir:</strong>
+                                    <div class="valor-destaque">
+                                        <span id="usinas-termeletricas">0</span> complexos
+                                    </div>
+                                    <p>termelétricos a carvão (857 MW cada)</p>
+                                </div>
+                                
+                                <div class="impactos">
+                                    <div class="impacto-item">
+                                        <h4>🌫️ Poluição do Ar</h4>
+                                        <p>Para cada Megawatt-hora (MWh) de energia gerado, uma usina a carvão emite aproximadamente <strong>1.000 kg de CO₂</strong> na atmosfera.</p>
+                                        <div class="equivalencia">
+                                            O total de CO₂ emitido por ano seria o mesmo que adicionar <strong><span id="carros-equivalentes">0</span> mil carros</strong> a gasolina circulando nas ruas de Uberaba.
+                                        </div>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>🌧️ Chuva Ácida</h4>
+                                        <p>A queima de carvão libera óxidos que causam chuva ácida, destruindo monumentos, plantações e contaminando a água.</p>
+                                        <img src="images/igreja_santa_rita.jpg" alt="Igreja de Santa Rita" class="impacto-imagem">
+                                        <div class="legenda">A chuva ácida corrói lentamente nossos monumentos históricos, como a Igreja de Santa Rita.</div>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>💨 Qualidade do Ar</h4>
+                                        <p>A qualidade do ar que respiramos na <strong>Avenida Leopoldino de Oliveira</strong> mudaria para sempre.</p>
+                                        <img src="images/avenida_leopoldino.jpg" alt="Avenida Leopoldino de Oliveira" class="impacto-imagem">
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>💧 Consumo de Água</h4>
+                                        <p>Termelétricas necessitam de um volume imenso de água para resfriar seus sistemas, competindo com o abastecimento humano.</p>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>☠️ Resíduos Tóxicos</h4>
+                                        <p>A queima do carvão gera toneladas de cinzas tóxicas com metais pesados, com risco de contaminação do solo e lençóis freáticos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="opcao-card" id="opcao-biomassa">
+                            <div class="opcao-header">
+                                <h3>🌾 Usinas a Biomassa</h3>
+                                <p>Como a UTE Uberaba 2 (bagaço de cana)</p>
+                            </div>
+                            <div class="opcao-content">
+                                <div class="necessidade">
+                                    <strong>Seria necessário construir:</strong>
+                                    <div class="valor-destaque">
+                                        <span id="usinas-biomassa">0</span> usinas
+                                    </div>
+                                    <p>como a UTE Uberaba 2 (35 MW cada)</p>
+                                </div>
+                                
+                                <div class="impactos">
+                                    <div class="impacto-item">
+                                        <h4>🌱 Uso da Terra</h4>
+                                        <p>A geração em larga escala exigiria uma vasta área dedicada ao plantio de cana-de-açúcar, competindo com a produção de alimentos e ecossistemas nativos.</p>
+                                    </div>
+
+                                    <div class="impacto-item">
+                                        <h4>💨 Emissões</h4>
+                                        <p>A queima de biomassa também emite CO₂ e material particulado, embora seja parcialmente compensado pela absorção durante o crescimento da planta.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-proximo" onclick="irParaPasso4()">
+                        Sua Escolha Faz a Diferença
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passo 4: Sua Escolha Faz a Diferença -->
+        <section id="passo4" class="passo">
+            <div class="background-image conclusao">
+                <div class="overlay"></div>
+            </div>
+            <div class="container">
+                <div class="content">
+                    <h1>Sua Escolha Faz a Diferença</h1>
+                    <p class="intro-final">A energia mais limpa e barata é aquela que não usamos. Cada pequena atitude, como apagar uma luz ou diminuir o tempo no banho, ajuda a proteger nossos rios, nosso ar e nossa cidade.</p>
+                    
+                    <div class="resumo-impacto">
+                        <h3>Resumo do Seu Impacto:</h3>
+                        <div class="resumo-grid">
+                            <div class="resumo-item">
+                                <div class="resumo-numero"><span id="resumo-consumo">0</span> kWh/mês</div>
+                                <div class="resumo-label">Seu consumo individual</div>
+                            </div>
+                            <div class="resumo-item">
+                                <div class="resumo-numero"><span id="resumo-cidade">0</span> GWh/mês</div>
+                                <div class="resumo-label">Se toda Uberaba consumisse igual</div>
+                            </div>
+                            <div class="resumo-item">
+                                <div class="resumo-numero"><span id="resumo-usinas">0</span> usinas</div>
+                                <div class="resumo-label">Hidrelétricas necessárias</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dicas-economia">
+                        <h3>💡 Dicas para Economizar Energia:</h3>
+                        <div class="dicas-grid">
+                            <div class="dica-item">
+                                <div class="dica-icon">💡</div>
+                                <div class="dica-texto">Troque lâmpadas incandescentes por LED</div>
+                            </div>
+                            <div class="dica-item">
+                                <div class="dica-icon">🚿</div>
+                                <div class="dica-texto">Reduza o tempo no banho quente</div>
+                            </div>
+                            <div class="dica-item">
+                                <div class="dica-icon">❄️</div>
+                                <div class="dica-texto">Não deixe a geladeira aberta</div>
+                            </div>
+                            <div class="dica-item">
+                                <div class="dica-icon">🔌</div>
+                                <div class="dica-texto">Desligue aparelhos da tomada</div>
+                            </div>
+                            <div class="dica-item">
+                                <div class="dica-icon">🌀</div>
+                                <div class="dica-texto">Use ventilador em vez de ar-condicionado</div>
+                            </div>
+                            <div class="dica-item">
+                                <div class="dica-icon">☀️</div>
+                                <div class="dica-texto">Aproveite a luz natural</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mensagem-final">
+                        <h2>O futuro de Uberaba está em nossas mãos.</h2>
+                        <p><strong>Qual será a sua escolha hoje?</strong></p>
+                    </div>
+
+                    <div class="acoes-finais">
+                        <button class="btn-recomecar" onclick="recomecarSimulacao()">
+                            🔄 Simular Novamente
+                        </button>
+                        <button class="btn-compartilhar" onclick="compartilharResultados()">
+                            📤 Compartilhar Resultados
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

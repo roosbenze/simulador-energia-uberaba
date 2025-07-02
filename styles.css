@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.passo {
+    min-height: 100vh;
+    position: relative;
+    display: none;
+    padding: 2rem 0;
+}
+
+.passo.ativo {
+    display: block;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.conclusao {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 2rem 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.intro {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.intro-final {
+    font-size: 1.3rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+/* Passo 1 - Aparelhos */
+.aparelhos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.aparelho-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.aparelho-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+.aparelho-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.aparelho-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.potencia {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-weight: 500;
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+.resultado-individual {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.resultado-individual h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.consumo-valor {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.consumo-mensal {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Passo 2 - Projeção */
+.projecao-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.projecao-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+}
+
+.projecao-card.destaque {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    transform: scale(1.1);
+}
+
+.projecao-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.projecao-card.destaque h3 {
+    color: white;
+}
+
+.valor-grande {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.projecao-card.destaque .valor-grande {
+    color: white;
+}
+
+.valor-gigante {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.equivalencia {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.multiplicacao, .igual {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3498db;
+}
+
+.visualizacao-grafico {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Passo 3 - Opções de Energia */
+.opcoes-energia {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.opcao-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.opcao-card:hover {
+    transform: translateY(-3px);
+}
+
+.opcao-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+}
+
+#opcao-termeletrica .opcao-header {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+#opcao-biomassa .opcao-header {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+.opcao-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.opcao-header p {
+    opacity: 0.9;
+}
+
+.opcao-content {
+    padding: 2rem;
+}
+
+.necessidade {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.valor-destaque {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e74c3c;
+    margin: 1rem 0;
+}
+
+.impactos {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.impacto-item {
+    padding: 1.5rem;
+    border-left: 4px solid #3498db;
+    background: #f8f9fa;
+    border-radius: 0 10px 10px 0;
+}
+
+#opcao-termeletrica .impacto-item {
+    border-left-color: #e74c3c;
+}
+
+#opcao-biomassa .impacto-item {
+    border-left-color: #27ae60;
+}
+
+.impacto-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.impacto-item .equivalencia {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-weight: 500;
+    border: 2px solid #e0e0e0;
+}
+
+.impacto-imagem {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.legenda {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Passo 4 - Conclusão */
+.resumo-impacto {
+    margin-bottom: 3rem;
+}
+
+.resumo-impacto h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.resumo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resumo-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.resumo-numero {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.resumo-label {
+    color: #555;
+    font-weight: 500;
+}
+
+.dicas-economia {
+    margin-bottom: 3rem;
+}
+
+.dicas-economia h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.dicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.dica-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dica-item:hover {
+    transform: translateY(-2px);
+}
+
+.dica-icon {
+    font-size: 1.5rem;
+}
+
+.dica-texto {
+    font-weight: 500;
+    color: #555;
+}
+
+.mensagem-final {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+}
+
+.mensagem-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.acoes-finais {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botões */
+.btn-proximo, .btn-recomecar, .btn-compartilhar {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.btn-proximo:hover, .btn-recomecar:hover, .btn-compartilhar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+}
+
+.btn-recomecar {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+.btn-compartilhar {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-proximo:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .content {
+        padding: 2rem 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .intro {
+        font-size: 1rem;
+    }
+    
+    .aparelhos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .projecao-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .multiplicacao, .igual {
+        transform: rotate(90deg);
+    }
+    
+    .valor-gigante {
+        font-size: 2rem;
+    }
+    
+    .resumo-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dicas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .acoes-finais {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.passo.ativo .content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.valor-destaque {
+    animation: pulse 2s infinite;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
