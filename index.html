@@ -11,7 +11,7 @@
     <div id="app">
         <!-- Passo 1: Sua Casa em Uberaba -->
         <section id="passo1" class="passo ativo">
-            <div class="background-image" style="background-image: url('images/parque_acacias.jpg');">
+            <div class="background-image" style="background-image: url("images/parque_acacias.jpg");">
                 <div class="overlay"></div>
             </div>
             <div class="container">
@@ -77,8 +77,36 @@
                         </div>
 
                         <div class="aparelho-card">
+                            <div class="aparelho-icon">🎮</div>
+                            <h3>Videogame</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="videogame-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="videogame-horas" min="0" max="24" value="3">
+                            </div>
+                            <div class="potencia">120W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">📱</div>
+                            <h3>Celular (Carregando)</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="celular-qtd" min="0" value="2">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="celular-horas" min="0" max="24" value="2">
+                            </div>
+                            <div class="potencia">5W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
                             <div class="aparelho-icon">💻</div>
-                            <h3>Computador</h3>
+                            <h3>Computador/Notebook</h3>
                             <div class="input-group">
                                 <label>Quantidade:</label>
                                 <input type="number" id="computador-qtd" min="0" value="1">
@@ -87,7 +115,176 @@
                                 <label>Horas por dia:</label>
                                 <input type="number" id="computador-horas" min="0" max="24" value="8">
                             </div>
+                            <div class="potencia">150W cada</div>
+                            <span class="nota-celular">*Considere o uso do celular aqui se for o principal dispositivo.</span>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🔊</div>
+                            <h3>Aparelho de Som/Caixa Bluetooth</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="som-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="som-horas" min="0" max="24" value="4">
+                            </div>
+                            <div class="potencia">30W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🗣️</div>
+                            <h3>Smart Speaker (Alexa/Google Home)</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="smart-speaker-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="smart-speaker-horas" min="0" max="24" value="24">
+                            </div>
+                            <div class="potencia">5W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🍲</div>
+                            <h3>Forno Micro-ondas</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="microondas-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="microondas-horas" min="0" max="24" step="0.1" value="0.2">
+                            </div>
+                            <div class="potencia">1200W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🥤</div>
+                            <h3>Liquidificador</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="liquidificador-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="liquidificador-horas" min="0" max="24" step="0.05" value="0.1">
+                            </div>
                             <div class="potencia">300W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">♨️</div>
+                            <h3>Forno Elétrico</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="forno-eletrico-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="forno-eletrico-horas" min="0" max="24" step="0.1" value="0.5">
+                            </div>
+                            <div class="potencia">2000W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🍟</div>
+                            <h3>Air Fryer</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="airfryer-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="airfryer-horas" min="0" max="24" step="0.1" value="0.3">
+                            </div>
+                            <div class="potencia">1500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🍞</div>
+                            <h3>Torradeira</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="torradeira-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="torradeira-horas" min="0" max="24" step="0.1" value="0.1">
+                            </div>
+                            <div class="potencia">800W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🧺</div>
+                            <h3>Ferro de Passar</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="ferro-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="ferro-horas" min="0" max="24" step="0.1" value="0.5">
+                            </div>
+                            <div class="potencia">1500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🧹</div>
+                            <h3>Aspirador de Pó</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="aspirador-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="aspirador-horas" min="0" max="24" step="0.1" value="0.5">
+                            </div>
+                            <div class="potencia">1000W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">👕</div>
+                            <h3>Máquina de Lavar</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="maquina-qtd" min="0" value="1">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="maquina-horas" min="0" max="24" step="0.5" value="1">
+                            </div>
+                            <div class="potencia">500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🌬️</div>
+                            <h3>Secadora de Roupas</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="secadora-qtd" min="0" value="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="secadora-horas" min="0" max="24" step="0.5" value="0">
+                            </div>
+                            <div class="potencia">2500W cada</div>
+                        </div>
+
+                        <div class="aparelho-card">
+                            <div class="aparelho-icon">🔥</div>
+                            <h3>Aquecedor Elétrico</h3>
+                            <div class="input-group">
+                                <label>Quantidade:</label>
+                                <input type="number" id="aquecedor-qtd" min="0" value="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Horas por dia:</label>
+                                <input type="number" id="aquecedor-horas" min="0" max="24" value="0">
+                            </div>
+                            <div class="potencia">1500W cada</div>
                         </div>
 
                         <div class="aparelho-card">
@@ -117,20 +314,6 @@
                             </div>
                             <div class="potencia">65W cada</div>
                         </div>
-
-                        <div class="aparelho-card">
-                            <div class="aparelho-icon">👕</div>
-                            <h3>Máquina de Lavar</h3>
-                            <div class="input-group">
-                                <label>Quantidade:</label>
-                                <input type="number" id="maquina-qtd" min="0" value="1">
-                            </div>
-                            <div class="input-group">
-                                <label>Horas por dia:</label>
-                                <input type="number" id="maquina-horas" min="0" max="24" step="0.5" value="1">
-                            </div>
-                            <div class="potencia">500W cada</div>
-                        </div>
                     </div>
 
                     <div class="resultado-individual">
@@ -153,7 +336,7 @@
 
         <!-- Passo 2: Sua Rua, Seu Bairro, Sua Cidade -->
         <section id="passo2" class="passo">
-            <div class="background-image" style="background-image: url('images/uberaba_panoramica.jpg');">
+            <div class="background-image" style="background-image: url("images/uberaba_panoramica.jpg");">
                 <div class="overlay"></div>
             </div>
             <div class="container">
@@ -416,4 +599,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 

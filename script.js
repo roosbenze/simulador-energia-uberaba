@@ -4,10 +4,23 @@ const aparelhos = {
     chuveiro: { potencia: 5500, nome: 'Chuveiro Elétrico' },
     geladeira: { potencia: 150, nome: 'Geladeira' },
     tv: { potencia: 100, nome: 'TV' },
-    computador: { potencia: 300, nome: 'Computador' },
+    videogame: { potencia: 120, nome: 'Videogame' },
+    celular: { potencia: 5, nome: 'Celular (Carregando)' },
+    computador: { potencia: 150, nome: 'Computador/Notebook' }, // Ajustado para notebook
+    som: { potencia: 30, nome: 'Aparelho de Som/Caixa Bluetooth' },
+    smartSpeaker: { potencia: 5, nome: 'Smart Speaker (Alexa/Google Home)' },
+    microondas: { potencia: 1200, nome: 'Forno Micro-ondas' },
+    liquidificador: { potencia: 300, nome: 'Liquidificador' },
+    fornoEletrico: { potencia: 2000, nome: 'Forno Elétrico' },
+    airfryer: { potencia: 1500, nome: 'Air Fryer' },
+    torradeira: { potencia: 800, nome: 'Torradeira' },
+    ferro: { potencia: 1500, nome: 'Ferro de Passar' },
+    aspirador: { potencia: 1000, nome: 'Aspirador de Pó' },
+    maquina: { potencia: 500, nome: 'Máquina de Lavar' },
+    secadora: { potencia: 2500, nome: 'Secadora de Roupas' },
+    aquecedor: { potencia: 1500, nome: 'Aquecedor Elétrico' },
     ar: { potencia: 1500, nome: 'Ar-condicionado' },
-    ventilador: { potencia: 65, nome: 'Ventilador' },
-    maquina: { potencia: 500, nome: 'Máquina de Lavar' }
+    ventilador: { potencia: 65, nome: 'Ventilador' }
 };
 
 // Dados das usinas
@@ -211,26 +224,30 @@ function getValorPadrao(aparelho, tipo) {
         chuveiro: { qtd: 1, horas: 1 },
         geladeira: { qtd: 1, horas: 24 },
         tv: { qtd: 2, horas: 6 },
+        videogame: { qtd: 1, horas: 3 },
+        celular: { qtd: 2, horas: 2 },
         computador: { qtd: 1, horas: 8 },
+        som: { qtd: 1, horas: 4 },
+        smartSpeaker: { qtd: 1, horas: 24 },
+        microondas: { qtd: 1, horas: 0.2 },
+        liquidificador: { qtd: 1, horas: 0.1 },
+        fornoEletrico: { qtd: 1, horas: 0.5 },
+        airfryer: { qtd: 1, horas: 0.3 },
+        torradeira: { qtd: 1, horas: 0.1 },
+        ferro: { qtd: 1, horas: 0.5 },
+        aspirador: { qtd: 1, horas: 0.5 },
+        maquina: { qtd: 1, horas: 1 },
+        secadora: { qtd: 0, horas: 0 },
+        aquecedor: { qtd: 0, horas: 0 },
         ar: { qtd: 1, horas: 8 },
-        ventilador: { qtd: 3, horas: 10 },
-        maquina: { qtd: 1, horas: 1 }
+        ventilador: { qtd: 3, horas: 10 }
     };
     
     return padroes[aparelho][tipo];
 }
 
 function compartilharResultados() {
-    const texto = `🔌 Simulador de Energia - Uberaba
-
-Meu consumo mensal: ${consumoMensal.toFixed(2)} kWh
-Se toda Uberaba consumisse igual: ${(consumoTotalCidade / 1000000).toFixed(2)} GWh/mês
-Usinas hidrelétricas necessárias: ${document.getElementById('resumo-usinas').textContent}
-
-💡 A energia mais limpa é aquela que não usamos!
-Vamos economizar energia e proteger nosso planeta! 🌍
-
-#EnergiaLimpa #Uberaba #Sustentabilidade`;
+    const texto = `🔌 Simulador de Energia - Uberaba\n\nMeu consumo mensal: ${consumoMensal.toFixed(2)} kWh\nSe toda Uberaba consumisse igual: ${(consumoTotalCidade / 1000000).toFixed(2)} GWh/mês\nUsinas hidrelétricas necessárias: ${document.getElementById('resumo-usinas').textContent}\n\n💡 A energia mais limpa é aquela que não usamos!\nVamos economizar energia e proteger nosso planeta! 🌍\n\n#EnergiaLimpa #Uberaba #Sustentabilidade`;
     
     if (navigator.share) {
         navigator.share({
@@ -297,4 +314,6 @@ function observarElementos() {
 
 // Inicializar observador quando a página carregar
 document.addEventListener('DOMContentLoaded', observarElementos);
+
+
 

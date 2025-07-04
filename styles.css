@@ -609,3 +609,14 @@ h1 {
     background: #2980b9;
 }
 
+
+
+.nota-celular {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+    display: block;
+    font-style: italic;
+}
+
