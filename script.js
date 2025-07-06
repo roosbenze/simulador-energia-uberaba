@@ -6,7 +6,7 @@ const aparelhos = {
     tv: { potencia: 100, nome: 'TV' },
     videogame: { potencia: 120, nome: 'Videogame' },
     celular: { potencia: 5, nome: 'Celular (Carregando)' },
-    computador: { potencia: 150, nome: 'Computador/Notebook' }, // Ajustado para notebook
+    computador: { potencia: 150, nome: 'Computador/Notebook' },
     som: { potencia: 30, nome: 'Aparelho de Som/Caixa Bluetooth' },
     smartSpeaker: { potencia: 5, nome: 'Smart Speaker (Alexa/Google Home)' },
     microondas: { potencia: 1200, nome: 'Forno Micro-ondas' },
@@ -55,8 +55,23 @@ function calcularConsumo() {
     let consumoTotal = 0;
     
     Object.keys(aparelhos).forEach(aparelho => {
-        const qtd = parseInt(document.getElementById(`${aparelho}-qtd`).value) || 0;
-        const horas = parseFloat(document.getElementById(`${aparelho}-horas`).value) || 0;
+        const qtdInput = document.getElementById(`${aparelho}-qtd`);
+        const horasInput = document.getElementById(`${aparelho}-horas`);
+        const minutosInput = document.getElementById(`${aparelho}-minutos`);
+
+        if (!qtdInput || !horasInput) { // Verifica se os elementos básicos existem
+            console.warn(`Elementos para ${aparelho} não encontrados.`);
+            return;
+        }
+
+        const qtd = parseInt(qtdInput.value) || 0;
+        let horas = parseFloat(horasInput.value) || 0;
+        
+        if (minutosInput) { // Se houver campo de minutos, adiciona ao cálculo
+            const minutos = parseFloat(minutosInput.value) || 0;
+            horas += minutos / 60;
+        }
+
         const potencia = aparelhos[aparelho].potencia;
         
         // Consumo em kWh por dia = (Potência em W × Horas × Quantidade) / 1000
@@ -209,8 +224,13 @@ function mostrarPasso(numero) {
 function recomecarSimulacao() {
     // Resetar valores
     Object.keys(aparelhos).forEach(aparelho => {
-        document.getElementById(`${aparelho}-qtd`).value = getValorPadrao(aparelho, 'qtd');
-        document.getElementById(`${aparelho}-horas`).value = getValorPadrao(aparelho, 'horas');
+        const qtdInput = document.getElementById(`${aparelho}-qtd`);
+        const horasInput = document.getElementById(`${aparelho}-horas`);
+        const minutosInput = document.getElementById(`${aparelho}-minutos`);
+
+        if (qtdInput) qtdInput.value = getValorPadrao(aparelho, 'qtd');
+        if (horasInput) horasInput.value = getValorPadrao(aparelho, 'horas');
+        if (minutosInput) minutosInput.value = getValorPadrao(aparelho, 'minutos'); // Resetar minutos
     });
     
     // Voltar para o primeiro passo
@@ -229,16 +249,16 @@ function getValorPadrao(aparelho, tipo) {
         computador: { qtd: 1, horas: 8 },
         som: { qtd: 1, horas: 4 },
         smartSpeaker: { qtd: 1, horas: 24 },
-        microondas: { qtd: 1, horas: 0.2 },
-        liquidificador: { qtd: 1, horas: 0.1 },
-        fornoEletrico: { qtd: 1, horas: 0.5 },
-        airfryer: { qtd: 1, horas: 0.3 },
-        torradeira: { qtd: 1, horas: 0.1 },
-        ferro: { qtd: 1, horas: 0.5 },
-        aspirador: { qtd: 1, horas: 0.5 },
+        microondas: { qtd: 1, horas: 0, minutos: 10 }, // Minutos
+        liquidificador: { qtd: 1, horas: 0, minutos: 5 }, // Minutos
+        fornoEletrico: { qtd: 1, horas: 0, minutos: 30 }, // Minutos
+        airfryer: { qtd: 1, horas: 0, minutos: 20 }, // Minutos
+        torradeira: { qtd: 1, horas: 0, minutos: 5 }, // Minutos
+        ferro: { qtd: 1, horas: 0, minutos: 30 }, // Minutos
+        aspirador: { qtd: 1, horas: 0, minutos: 30 }, // Minutos
         maquina: { qtd: 1, horas: 1 },
-        secadora: { qtd: 0, horas: 0 },
-        aquecedor: { qtd: 0, horas: 0 },
+        secadora: { qtd: 0, horas: 0, minutos: 0 }, // Minutos
+        aquecedor: { qtd: 0, horas: 0, minutos: 0 }, // Minutos
         ar: { qtd: 1, horas: 8 },
         ventilador: { qtd: 3, horas: 10 }
     };
@@ -268,9 +288,11 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(aparelhos).forEach(aparelho => {
         const qtdInput = document.getElementById(`${aparelho}-qtd`);
         const horasInput = document.getElementById(`${aparelho}-horas`);
+        const minutosInput = document.getElementById(`${aparelho}-minutos`);
         
         if (qtdInput) qtdInput.addEventListener('input', calcularConsumo);
         if (horasInput) horasInput.addEventListener('input', calcularConsumo);
+        if (minutosInput) minutosInput.addEventListener('input', calcularConsumo);
     });
     
     // Calcular consumo inicial
@@ -314,6 +336,8 @@ function observarElementos() {
 
 // Inicializar observador quando a página carregar
 document.addEventListener('DOMContentLoaded', observarElementos);
+
+
 
 
 
