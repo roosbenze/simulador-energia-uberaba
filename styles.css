@@ -620,3 +620,126 @@ h1 {
     font-style: italic;
 }
 
+
+/* Estilos para o botão de pré-teste */
+.botao-pre-teste {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.btn-teste-conhecimentos {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.btn-teste-conhecimentos:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.descricao-teste {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* Estilos para a seção de reflexão final */
+.reflexao-final {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    color: white;
+}
+
+.reflexao-final h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.reflexao-final p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.botoes-questionario {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-questionario {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    min-width: 250px;
+}
+
+.btn-questionario:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-questionario.aluno-roosevelt {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+}
+
+.btn-questionario.nao-aluno {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-color: transparent;
+}
+
+/* Responsividade para os botões */
+@media (max-width: 768px) {
+    .botoes-questionario {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-questionario {
+        min-width: 200px;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .botao-pre-teste {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .btn-teste-conhecimentos {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+

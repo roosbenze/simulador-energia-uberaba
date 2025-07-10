@@ -341,3 +341,21 @@ document.addEventListener('DOMContentLoaded', observarElementos);
 
 
 
+
+
+// Funções para os formulários
+function abrirPreTeste() {
+    // Abre o formulário de pré-teste em uma nova aba
+    window.open('https://forms.gle/RnYbqnpQy79Pq3h96', '_blank');
+}
+
+function abrirQuestionarioRoosevelt() {
+    // Abre o formulário para alunos do Professor Roosevelt (Grupo Experimental)
+    window.open('https://forms.gle/ce1JgKhcCaBuc92XA', '_blank');
+}
+
+function abrirQuestionarioGeral() {
+    // Abre o formulário para não alunos do Professor Roosevelt (Grupo Controle)
+    window.open('https://forms.gle/P5jA2XRLXY2FQr4g7', '_blank');
+}
+
